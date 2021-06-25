@@ -1,2 +1,2 @@
-# abhinavsinha_fullstack_hack21
-Frontend and backend files for Hackathon 2021 organised by E Cell IIIT-P.
+# Vaccine For Every Indian
+Frontend and Backend files for project Vaccine For Every Indian under Hackathon 2021 organised by E Cell IIIT-P.
