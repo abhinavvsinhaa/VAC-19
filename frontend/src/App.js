@@ -4,12 +4,13 @@ import Available from './components/available';
 import Register from './components/register';
 import Profile from './components/profile';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import './styles/app.css';
 
 class App extends React.Component {
 
   render() { 
     return(
-      <BrowserRouter>
+      <BrowserRouter className="App">
         <Navbar />
 
         <Switch>

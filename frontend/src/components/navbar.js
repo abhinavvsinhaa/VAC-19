@@ -1,26 +1,31 @@
 import React from 'react';
 import '../styles/navbar.css';
-import { NavLink, BrowserRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 
 const Navbar = () => {
     return(
-        <BrowserRouter>
-        <nav className="navbar navbar-expand-lg navbar-custom bg-custom">
-            <div className="collapse navbar-collapse justify-content-center" id="navbarNav">
-                <ul className="nav ">
-                <li className="nav-item active">
-                    <a href = '/' id='navlink'>Find</a>
+        // <BrowserRouter>
+        <nav class="navbar navbar-expand-lg navbar-light bg-custom">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="/" id='navlink'>Find</a>
                 </li>
-                <li className="nav-item">
-                    <a href="/register" id='navlink'>Register</a>
+                <li class="nav-item">
+                    <a class="nav-link" id='navlink' href="/register">Register</a>
                 </li>
-                <li className="nav-item">
-                    <a href="/profile" id='navlink'>Profile</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="/profile" id='navlink'>Profile</a>
                 </li>
-                </ul>
+            </ul>
             </div>
+        </div>
         </nav>
-        </BrowserRouter>
+        // </BrowserRouter>
     );
 }
 
