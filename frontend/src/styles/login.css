@@ -1,17 +1,14 @@
-.login {
-  height: 100vh;
-  overflow: hidden;
+#enterPhone {
+  font-family: "Poppins", sans-serif;
+  margin-top: 40px;
 }
 
-.form-floating {
-  margin-top: 25%;
-  width: 100%;
+.btn,
+input {
+  font-family: "Poppins", sans-serif;
 }
 
-#recaptcha {
-  width: 100%;
-}
-
-.btn {
-  width: 100%;
+#successReg,
+#unsuccessReg {
+  visibility: hidden;
 }
