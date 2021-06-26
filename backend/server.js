@@ -35,6 +35,33 @@ app.get('/', (request, response) => {
     })
 })
 
+app.post('/',(request, response) => {
+    console.log(request.body);
+    let user = {
+        name: request.body.name,
+        age: request.body.age,
+        mobile: request.body.mobile,
+        verificationId: request.body.verificationId,
+        idNo: request.body.idNo,
+        address: request.body.address,
+        pincode: request.body.pincode,
+        reason: request.body.reason
+    }
+
+    let query = 'INSERT INTO homereg(name,age,mobile,verification_id,id_no,pincode,address,reason) VALUES($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *';
+    let values = [user.name,user.age,user.mobile,user.verificationId,user.idNo,user.pincode,user.address,user.reason];
+
+    pool.query(query,values, (err,res) => {
+        if(err) {
+            console.log(err)
+        } else {
+            return response.status(200).send('User registered');
+        }
+    })
+
+})
+
+
 app.listen(8080, () => {
     console.log('server working');
 })
