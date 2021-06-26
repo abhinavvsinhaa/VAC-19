@@ -5,8 +5,40 @@ class Availabile extends React.Component {
     constructor() {
         super();
         this.state = { 
-            pincode : ''
+            pincode : '',
+            vans : [],
+            van : {
+                sno : '',
+                address: '',
+                availability : '',
+                registration : ''
+            }
         }
+        this.onSubmit = this.onSubmit.bind(this);
+        this.onFetch = this.onFetch.bind(this);
+        this.onChange = this.onChange.bind(this);
+    }
+
+    onFetch = (result) => {
+        for(let i = 0; i < result.length; i++) {
+            this.setState({van : {
+                sno: result[i].sno,
+                address: result[i].address,
+                available: result[i].availability,
+                registration: result[i].registration 
+            }})
+
+            this.setState({vans : [...this.state.vans,this.state.van]})
+
+            this.setState({van : {
+                sno: '',
+                address: '',
+                available: '',
+                registration: ''
+            }})
+        }
+
+        console.log(this.state.vans);
     }
 
     onChange = (event) => {
@@ -23,10 +55,12 @@ class Availabile extends React.Component {
 
         fetch(`http://localhost:8080/?pincode=${this.state.pincode}`,requestOptions)
             .then(response => response.json())
-            .then(console.log)
+            .then(result => {
+                this.onFetch(result);
+               
+            })
             .catch(console.log)
     }
-
 
     render() {
         return(
@@ -52,6 +86,24 @@ class Availabile extends React.Component {
                     <div className= 'col-xl-6 col-lg-6 col-md-8 col-sm-12 col-12'>
                     <br/><br/>
                     <p className= 'vansInLocality'>Vans in your locality</p>
+                    <br/>
+                    {this.state.vans.map(v => {
+                        return (
+                        <>    
+                        <div class="card">
+                            <div class="card-header">
+                                Van {v.sno}
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">{v.address}
+                                <span class="badge rounded-pill bg-custom">Closed</span>
+                                </p>
+                            </div>
+                        </div>
+                        <br/>
+                        </>
+                        );
+                    })}
                     </div>
                 </div>
             </div>

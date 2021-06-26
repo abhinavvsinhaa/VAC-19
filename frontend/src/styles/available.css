@@ -13,3 +13,23 @@
   font-size: 25px;
   font-weight: 600;
 }
+
+.card {
+  font-family: "Poppins", sans-serif;
+  background-color: whitesmoke;
+  border: 1px solid #e29578;
+}
+
+.card-header {
+  font-weight: 500;
+  background-color: #006d77;
+  border: none;
+  color: whitesmoke;
+}
+
+.badge {
+  float: right;
+  font-family: "Poppins", sans-serif;
+  padding: 10px;
+  background-color: #9d0208;
+}
