@@ -67,7 +67,7 @@ class HomeReg extends React.Component {
                 <div className='row justify-content-center'>
                     <div className='col-xl-6 col-lg-6 col-md-8 col-sm-12 col-12'>
                     <br/>
-                    <p>Register to get vaccinated at your home.</p>
+                    <p id='homeRegsubhead'>Register to get vaccinated at your home.</p>
                     <form className='basic-regform' onSubmit={this.onBasicFormSubmit}>
                     <div class="form-group row">
                         <label htmlFor="name" className="form-label col-sm-4" >Name</label>
@@ -128,10 +128,10 @@ class HomeReg extends React.Component {
                         <label for="reason" class="form-label col-sm-4">Reason to opt for home reg.</label>
                         <div class="col-sm-8">
                         <textarea class="form-control" id="reason" rows="3" value={this.state.reason} onChange={this.onBasicFormChange}></textarea>
+                        <br/>
+                        <button type="submit" class="btn">Register</button>
                         </div>
                     </div>
-                    <br/>
-                        <button type="submit" class="btn btn-primary">Submit</button>
                     </form> 
                     <br/>
                     <div id='recaptcha'></div>

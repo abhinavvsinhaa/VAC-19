@@ -29,6 +29,7 @@ class Login extends React.Component {
             e.confirm(code)
                 .then(result => {
                     console.log(result.user);
+                    
                     document.getElementById('successReg').style.visibility = 'visible';
                 })
                 .catch(err => {

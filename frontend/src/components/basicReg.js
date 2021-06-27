@@ -67,7 +67,7 @@ class BasicReg extends React.Component {
                 <div className='row justify-content-center'>
                     <div className='col-xl-6 col-lg-6 col-md-8 col-sm-12 col-12'>
                     <br/>
-                    <p>Register to get vaccinated at mobile vans.</p>
+                    <p id='basicRegsubhead'>Register to get vaccinated at mobile vans.</p>
                     <form className='basic-regform' onSubmit={this.onHomeFormSubmit}>
                     <div class="form-group row">
                         <label htmlFor="name" className="form-label col-sm-4" >Name</label>
@@ -126,9 +126,10 @@ class BasicReg extends React.Component {
                             <option id="dharahra">Dharahra</option>
                             <option id="nirala nagar">Nirala nagar</option>
                         </select>
+                        <br/>
+                        <button type="submit" class="btn">Register</button>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                     <br/>
                     <div id='recaptcha'></div>

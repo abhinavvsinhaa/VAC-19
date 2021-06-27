@@ -87,6 +87,37 @@ app.post('/basicreg',(request, response) => {
     })
 })
 
+app.get('/getdetailsBasic',(request, response) => {
+    let idNo = request.query.idNo;
+    let mobile = request.query.mobile;
+    let query1 = 'SELECT * FROM basicreg WHERE id_no = $1 AND mobile = $2';
+    let values1 = [idNo,mobile]; 
+
+    pool.query(query1, values1, (err,res) => {
+        if(err) {
+            console.log(err);
+        } else {
+            console.log(res.rows[0]);
+            response.json(res.rows[0]);
+        }
+    })
+})
+
+app.get('/getDetailsHome',(request, response) => {
+    let idNo = request.query.idNo;
+    let mobile = request.query.mobile;
+    let query2 = 'SELECT * FROM homereg WHERE id_no = $1 AND mobile = $2';
+    let values2 = [idNo,mobile];
+    pool.query(query2, values2, (err,res) => {
+        if(err) {
+            console.log(err);
+        } else {
+            console.log(res.rows[0]);
+            response.json(res.rows[0]);
+        }
+    })  
+})
+
 
 app.listen(8080, () => {
     console.log('server working');

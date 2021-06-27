@@ -1,0 +1,48 @@
+.list li {
+  margin-left: 20px;
+}
+
+#details {
+  font-size: 20px;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+#subdetails {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.pdf {
+  margin-left: 20px;
+}
+
+.pdfinner {
+  padding-top: 20px;
+  padding-left: 30px;
+  border: 1px solid black;
+  padding-bottom: 20px;
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.btn {
+  background-color: #212529;
+  color: whitesmoke;
+}
+
+.btn:hover {
+  color: #83c5be;
+}
+
+#downPdf {
+  margin-bottom: 30px;
+}
+
+#endDoc {
+  text-align: center;
+}
