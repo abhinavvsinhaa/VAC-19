@@ -4,17 +4,14 @@ const cors = require('cors');
 
 const app = express();
 const pool = new Pool ({
-    user: process.env.USERNAME,
-    host: process.env.HOSTNAME,
-    database: process.env.DATABASE,
-    password: process.env.PASSWORD,
-    port: 25060,
-    ssl: {
-        rejectUnauthorized: true,
-        ca: process.env.CA_CERT
-    },
-    connectTimeout: 90000   
+       
 })
+
+// user : 'postgres',
+//     host : 'localhost',
+//     database : 'vaccine_hack21',
+//     password : 'test',
+//     port : 5432 
 
 app.use(cors());
 app.use(
@@ -26,6 +23,8 @@ app.use(
 app.use(express.json())
 
 app.get('/', (request, response) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "*");
     let pincode = request.query.pincode;
     let query = 'SELECT * FROM ' + `"${pincode}"` + ';'
     console.log(query);
@@ -41,6 +40,8 @@ app.get('/', (request, response) => {
 })
 
 app.post('/homereg',(request, response) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "*");
     console.log(request.body);
     let user = {
         name: request.body.name,
@@ -68,6 +69,8 @@ app.post('/homereg',(request, response) => {
 })
 
 app.post('/basicreg',(request, response) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "*");
     console.log(request.body);
     let user = {
         name: request.body.name,
@@ -93,6 +96,8 @@ app.post('/basicreg',(request, response) => {
 })
 
 app.get('/getdetailsBasic',(request, response) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "*");
     let idNo = request.query.idNo;
     let mobile = request.query.mobile;
     let query1 = 'SELECT * FROM basicreg WHERE id_no = $1 AND mobile = $2';
@@ -109,6 +114,8 @@ app.get('/getdetailsBasic',(request, response) => {
 })
 
 app.get('/getDetailsHome',(request, response) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "*");
     let idNo = request.query.idNo;
     let mobile = request.query.mobile;
     let query2 = 'SELECT * FROM homereg WHERE id_no = $1 AND mobile = $2';
