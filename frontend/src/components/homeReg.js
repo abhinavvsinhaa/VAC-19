@@ -3,7 +3,7 @@ import '../styles/basicReg.css';
 import firebase from '../firebase';
 import '../styles/login.css';
 
-class BasicReg extends React.Component {
+class HomeReg extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -12,20 +12,19 @@ class BasicReg extends React.Component {
             mobile : '',
             verificationId : '',
             idNo : '',
+            address : '',
             pincode : '',
-            vanAddress: ''
+            reason: ''
         }
     }
 
-    onHomeFormChange = (event) => {
+    onBasicFormChange = (event) => {
         this.setState({[event.target.id]: event.target.value});
         let idType = document.getElementById('verificationId');
         this.setState({verificationId: idType.value});
-        let van = document.getElementById('vanAddress');
-        this.setState({vanAddress: van.value});
     }
     
-    onHomeFormSubmit = (event) => {
+    onBasicFormSubmit = (event) => {
         event.preventDefault();
         console.log(this.state);
 
@@ -40,17 +39,19 @@ class BasicReg extends React.Component {
 
             e.confirm(code)
                 .then(result => {
+                    console.log(result.user);
                     let requestOptions = {
                         method : 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body : JSON.stringify(this.state)
                     }
             
-                    fetch('http://localhost:8080/basicreg',requestOptions)
+                    fetch('http://localhost:8080/homereg',requestOptions)
                         .then(response => {
                             document.getElementById('successReg').style.visibility = 'visible';
                         })
                         .catch(console.log)
+                    document.getElementById('successReg').style.visibility = 'visible';
                 })
                 .catch(err => {
                     document.getElementById('unsuccessReg').style.visibility = 'visible';
@@ -58,7 +59,6 @@ class BasicReg extends React.Component {
         }).catch((error) => {
             console.log(error);
         });
-        
     }
     
     render() {
@@ -67,33 +67,33 @@ class BasicReg extends React.Component {
                 <div className='row justify-content-center'>
                     <div className='col-xl-6 col-lg-6 col-md-8 col-sm-12 col-12'>
                     <br/>
-                    <p>Register to get vaccinated at mobile vans.</p>
-                    <form className='basic-regform' onSubmit={this.onHomeFormSubmit}>
+                    <p>Register to get vaccinated at your home.</p>
+                    <form className='basic-regform' onSubmit={this.onBasicFormSubmit}>
                     <div class="form-group row">
                         <label htmlFor="name" className="form-label col-sm-4" >Name</label>
                         <div class="col-sm-8">
-                        <input type="text" class="form-control" placeholder='Vikram Satija' id="name" required value={this.state.name} onChange={this.onHomeFormChange}/>
+                        <input type="text" class="form-control" placeholder='Vikram Satija' id="name" required value={this.state.name} onChange={this.onBasicFormChange}/>
                         </div>
                     </div>
                     <br/>
                     <div class="form-group row">
                         <label for="age" class="form-label col-sm-4">Age</label>
                         <div class="col-sm-8">
-                        <input type="text" class="form-control" placeholder='21' id="age" required value={this.state.age} onChange={this.onHomeFormChange}/>
+                        <input type="text" class="form-control" placeholder='21' id="age" required value={this.state.age} onChange={this.onBasicFormChange}/>
                         </div>
                     </div>
                     <br/>
                     <div class="form-group row">
                         <label for="mobile" class="form-label col-sm-4">Mobile No.</label>
                         <div class="col-sm-8">
-                        <input type="tel" class="form-control" id="mobile" placeholder ='9999999999' required value={this.state.mobile} onChange={this.onHomeFormChange}/>
+                        <input type="tel" class="form-control" id="mobile" placeholder ='9999999999' required value={this.state.mobile} onChange={this.onBasicFormChange}/>
                         </div>
                     </div>
                     <br/>
                     <div class="form-group row">
                         <label for="verificationId" class="form-label col-sm-4">Verif. ID</label>
                         <div class="col-sm-8">
-                        <select class="form-select form-control" id='verificationId' required onChange={this.onHomeFormChange}>
+                        <select class="form-select form-control" id='verificationId' required onChange={this.onBasicFormChange}>
                                 <option id="pan">Pan</option>
                                 <option id="passport">Passport</option>
                                 <option id="aadhar">Aadhar</option>
@@ -106,30 +106,33 @@ class BasicReg extends React.Component {
                     <div class="form-group row">
                         <label for="idNo" class="form-label col-sm-4">ID No.</label>
                         <div class="col-sm-8">
-                        <input type="text" required class="form-control" id="idNo" value={this.state.idNo} onChange={this.onHomeFormChange}/>
+                        <input type="text" required class="form-control" id="idNo" value={this.state.idNo} onChange={this.onBasicFormChange}/>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="form-group row">
+                        <label for="address" class="form-label col-sm-4">Address</label>
+                        <div class="col-sm-8">
+                        <input type="text" class="form-control" id="address" placeholder='Street 2, Viraj Nagar' required value={this.state.address} onChange={this.onBasicFormChange}/>
                         </div>
                     </div>
                     <br/>
                     <div class="form-group row">
                         <label for="pincode" class="form-label col-sm-4">Pin code</label>
                         <div class="col-sm-8">
-                        <input type="text" class="form-control" id="pincode" required placeholder='277001' value={this.state.pincode} onChange={this.onHomeFormChange}/>
+                        <input type="text" class="form-control" id="pincode" required placeholder='277001' value={this.state.pincode} onChange={this.onBasicFormChange}/>
                         </div>
                     </div>
                     <br/>
                     <div class="form-group row">
-                        <label for="vanAddress" class="form-label col-sm-4">Choose Van</label>
+                        <label for="reason" class="form-label col-sm-4">Reason to opt for home reg.</label>
                         <div class="col-sm-8">
-                        <select class="form-select form-control" id='vanAddress' required onChange={this.onHomeFormChange}>
-                            <option id="gurudwara road">Gurudwara road</option>
-                            <option id="chandrasekhar nagar">Chandrasekhar nagar</option>
-                            <option id="dharahra">Dharahra</option>
-                            <option id="nirala nagar">Nirala nagar</option>
-                        </select>
+                        <textarea class="form-control" id="reason" rows="3" value={this.state.reason} onChange={this.onBasicFormChange}></textarea>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
+                    <br/>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form> 
                     <br/>
                     <div id='recaptcha'></div>
                     <br/>
@@ -142,4 +145,4 @@ class BasicReg extends React.Component {
     }
 }
 
-export default BasicReg;
+export default HomeReg;

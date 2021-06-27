@@ -35,7 +35,7 @@ app.get('/', (request, response) => {
     })
 })
 
-app.post('/',(request, response) => {
+app.post('/homereg',(request, response) => {
     console.log(request.body);
     let user = {
         name: request.body.name,
@@ -55,10 +55,36 @@ app.post('/',(request, response) => {
         if(err) {
             console.log(err)
         } else {
+            console.log('Home registration done!')
             return response.status(200).send('User registered');
         }
     })
 
+})
+
+app.post('/basicreg',(request, response) => {
+    console.log(request.body);
+    let user = {
+        name: request.body.name,
+        age: request.body.age,
+        mobile: request.body.mobile,
+        verificationId: request.body.verificationId,
+        idNo: request.body.idNo,
+        pincode: request.body.pincode,
+        vanAddress: request.body.vanAddress
+    }
+
+    let query = 'INSERT INTO basicreg(name,age,mobile,verification_id,id_no,pincode,van_address) VALUES($1,$2,$3,$4,$5,$6,$7) RETURNING *';
+    let values = [user.name,user.age,user.mobile,user.verificationId,user.idNo,user.pincode,user.vanAddress];
+
+    pool.query(query,values, (err,res) => {
+        if(err) {
+            console.log(err)
+        } else {
+            console.log('Basic registration done!')
+            return response.status(200).send('User registered');
+        }
+    })
 })
 
 

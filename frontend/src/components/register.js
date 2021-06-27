@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/register.css';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Login from './login';
+import HomeReg from './homeReg';
 import BasicReg from './basicReg';
 
 class Register extends React.Component {
@@ -41,8 +41,8 @@ class Register extends React.Component {
                 </div>
             </div>
             <Switch>
-                <Route exact path = '/register/' component={BasicReg}/>
-                <Route path = '/register/basic' component={Login}/>
+                <Route exact path = '/register/' component={HomeReg}/>
+                <Route path = '/register/basic' component={BasicReg}/>
             </Switch>
             </BrowserRouter>
         );
