@@ -4,11 +4,16 @@ const cors = require('cors');
 
 const app = express();
 const pool = new Pool ({
-    user : 'postgres',
-    host : 'localhost',
-    database : 'vaccine_hack21',
-    password : 'test',
-    port : 5432    
+    user: process.env.USERNAME,
+    host: process.env.HOSTNAME,
+    database: process.env.DATABASE,
+    password: process.env.PASSWORD,
+    port: 25060,
+    ssl: {
+        rejectUnauthorized: true,
+        ca: process.env.CA_CERT
+    },
+    connectTimeout: 90000   
 })
 
 app.use(cors());
@@ -119,6 +124,6 @@ app.get('/getDetailsHome',(request, response) => {
 })
 
 
-app.listen(8080, () => {
+app.listen(25060, () => {
     console.log('server working');
 })

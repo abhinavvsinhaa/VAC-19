@@ -22,13 +22,17 @@
 
 .itemcustom {
   background-color: transparent;
-  border-top: 1px solid #006d77;
-  border-right: 1px solid #006d77;
-  border-left: 1px solid #006d77;
+  border-right: 2px solid #006d77;
 }
 
 .reglink {
   font-family: "Poppins", sans-serif;
   color: black;
   background-color: transparent;
+}
+
+#check {
+  font-size: 18px;
+  margin-right: 10px;
+  font-weight: 600;
 }

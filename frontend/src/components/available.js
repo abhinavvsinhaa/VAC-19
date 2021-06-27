@@ -53,7 +53,7 @@ class Availabile extends React.Component {
             method: 'GET'
         };
 
-        fetch(`http://localhost:8080/?pincode=${this.state.pincode}`,requestOptions)
+        fetch(`https://vaccine-server-uiq53.ondigitalocean.app/?pincode=${this.state.pincode}`,requestOptions)
             .then(response => response.json())
             .then(result => {
                 this.onFetch(result);

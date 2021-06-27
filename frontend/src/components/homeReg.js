@@ -46,7 +46,7 @@ class HomeReg extends React.Component {
                         body : JSON.stringify(this.state)
                     }
             
-                    fetch('http://localhost:8080/homereg',requestOptions)
+                    fetch('https://vaccine-server-uiq53.ondigitalocean.app/homereg',requestOptions)
                         .then(response => {
                             document.getElementById('successReg').style.visibility = 'visible';
                         })

@@ -5,23 +5,12 @@ import HomeReg from './homeReg';
 import BasicReg from './basicReg';
 
 class Register extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
-            path: ''
+            path: this.props.location.pathname
         }
     }
-
-    // onRouteChange = () => {
-    //     let route = this.props.location.pathname;
-    //     route.toString();
-    //     console.log(route);
-    //     if(route === '/register/') {
-    //         document.getElementById('basiclink').style.borderTop = 'none';
-    //     } else if(route === '/register/basic'){
-    //         document.getElementById('homelink').style.border = 'none';
-    //     }
-    // }
 
     render() {
         return(
@@ -31,10 +20,16 @@ class Register extends React.Component {
                     <div className="col-xl-6 col-lg-6 col-md-8 col-sm-12 col-12">
                     <ul className="nav nav-tabs">
                         <li className="nav-item itemcustom" id="homelink">
-                            <a className="nav-link reglink " aria-current="page" href="/register" >Home Registration</a>
+                            <a className="nav-link reglink " aria-current="page" href="/register" >{
+                                (this.state.path === '/register')?
+                                <span id='check'>»</span>:<></>
+                            }Home Registration</a>
                         </li>
                         <li className="nav-item" id="basiclink">
-                            <a className="nav-link reglink " href="/register/basic">Basic Registration</a>
+                            <a className="nav-link reglink " href="/register/basic">{
+                                (this.state.path === '/register/basic')?
+                                <span id='check'>»</span>:<></>
+                            }Basic Registration</a>
                         </li>
                     </ul>
                     </div>
