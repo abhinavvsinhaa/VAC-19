@@ -1,0 +1,16 @@
+{
+  "name": "backend.v2",
+  "version": "2.0.0",
+  "description": "Backend version 2.0 for vac19.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Abhinav Sinha",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^11.0.0",
+    "express": "^4.17.2",
+    "morgan": "^1.10.0"
+  }
+}

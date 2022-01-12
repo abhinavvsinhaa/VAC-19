@@ -46,7 +46,7 @@ class Profile extends React.Component {
 
     onProfileFormSubmit = (event) => {
         event.preventDefault();
-        fetch(`hhttps://vaccine-server-uiq53.ondigitalocean.app/getdetailsBasic?idNo=${this.state.idNo}&mobile=${this.state.mobile}`)
+        fetch(`http://localhost:8080/getdetailsBasic?idNo=${this.state.idNo}&mobile=${this.state.mobile}`)
         .then(response => response.json())
         .then(result => {
             this.setState({basicReg: {
@@ -66,7 +66,7 @@ class Profile extends React.Component {
         })
         .catch(console.log)
 
-        fetch(`https://vaccine-server-uiq53.ondigitalocean.app/getdetailsHome?idNo=${this.state.idNo}&mobile=${this.state.mobile}`)
+        fetch(`http://localhost:8080/getDetailsHome?idNo=${this.state.idNo}&mobile=${this.state.mobile}`)
         .then(response => response.json())
         .then(result => {
             this.setState({homeReg: {
